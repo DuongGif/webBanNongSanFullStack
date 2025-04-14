@@ -1,15 +1,19 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import func
 from app.models.nong_san import NongSan
-from app.models.loai_nong_san import LoaiNongSan
-from app.models.nha_cung_cap import NhaCungCap
 from app import db
 
 bp = Blueprint("nong_san", __name__)
 
+# ✅ Lấy danh sách nông sản với phân trang
 @bp.route("/", methods=["GET"])
-def get_all_nongsan():
-    nongsan = NongSan.query.all()
+def get_all_nongsan_paginated():
+    page = request.args.get("page", default=1, type=int)
+    limit = request.args.get("limit", default=6, type=int)
+
+    query = NongSan.query.order_by(NongSan.MaNongSan)
+    total = query.count()
+
+    nongsan = query.offset((page - 1) * limit).limit(limit).all()
     result = []
     for ns in nongsan:
         result.append({
@@ -22,9 +26,21 @@ def get_all_nongsan():
             "MaNhaCungCap": ns.MaNhaCungCap,
             "DuongDanAnh": ns.DuongDanAnh
         })
-    return jsonify(result)
 
-@bp.route("/api/nongsan", methods=["POST"])
+    return jsonify({
+        "items": result,
+        "pagination": {
+            "total": total,
+            "page": page,
+            "limit": limit,
+            "pages": (total + limit - 1) // limit,
+            "has_next": page * limit < total,
+            "has_prev": page > 1
+        }
+    })
+
+# ✅ Tạo nông sản mới
+@bp.route("/", methods=["POST"])
 def create_nong_san():
     data = request.get_json()
     ns = NongSan(
@@ -41,8 +57,8 @@ def create_nong_san():
     db.session.commit()
     return jsonify({"message": "Tạo nông sản thành công"}), 201
 
-# Cập nhật
-@bp.route("/api/nongsan/<id>", methods=["PUT"])
+# ✅ Cập nhật nông sản
+@bp.route("/<id>", methods=["PUT"])
 def update_nong_san(id):
     ns = NongSan.query.get(id)
     if not ns:
@@ -60,8 +76,8 @@ def update_nong_san(id):
     db.session.commit()
     return jsonify({"message": "Cập nhật nông sản thành công"})
 
-# Xóa
-@bp.route("/api/nongsan/<id>", methods=["DELETE"])
+# ✅ Xóa nông sản
+@bp.route("/<id>", methods=["DELETE"])
 def delete_nong_san(id):
     ns = NongSan.query.get(id)
     if not ns:
