@@ -8,8 +8,12 @@ from .kho import bp as kho_bp
 from .khuyen_mai import bp as khuyen_mai_bp
 from .nguon_goc import bp as nguon_goc_bp
 from .anh_nong_san import bp as anh_nong_san_bp
+from .cart import cart_bp  # Thêm import cho cart_bp
+from .review import bp as review_bp
+from .contact import contact_bp
 
 def register_routes(app):
+    app.register_blueprint(contact_bp)
     app.register_blueprint(nong_san_bp)
     app.register_blueprint(loai_nong_san_bp)
     app.register_blueprint(nha_cung_cap_bp)
@@ -20,3 +24,5 @@ def register_routes(app):
     app.register_blueprint(khuyen_mai_bp)
     app.register_blueprint(nguon_goc_bp)
     app.register_blueprint(anh_nong_san_bp)
+    app.register_blueprint(cart_bp)  # Đăng ký cart blueprint
+    app.register_blueprint(review_bp)

@@ -2,3 +2,7 @@ Flask
 Flask-SQLAlchemy
 pyodbc
 python-dotenv
+PAYPAL_CLIENT_ID=
+PAYPAL_CLIENT_SECRET=
+ "client_id": "AZxeaZAY_I0N79QOxIXOtPSoYTFKnoaO1AgX7VDqQRQoL-PqvKRcUsj7x8xABFHM45Z8F95jr-QeXeRO",  # Đảm bảo bảo mật thông tin này
+    "client_secret": "EEh4ptGwNJu3iqIkeCRBLPSdFVIeUNhkubgJmrptH9krlnnpimBaKzWLXxEapcDOEzH6gKAqKcL-o3P6"  # Đảm bảo bảo mật thông tin này

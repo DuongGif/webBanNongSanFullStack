@@ -3,20 +3,38 @@ from app.models import Kho
 from app import db
 from datetime import datetime
 
-bp = Blueprint("kho", __name__, url_prefix="/kho")
+bp = Blueprint("kho", __name__)
 
 # Lấy danh sách toàn bộ kho
 @bp.route("/", methods=["GET"])
 def get_all_kho():
-    ds_kho = Kho.query.all()
+    page = request.args.get("page", default=1, type=int)
+    limit = request.args.get("limit", default=6, type=int)
+
+    query = Kho.query.order_by(Kho.MaNongSan)
+    total = query.count()
+    kho_items = query.offset((page - 1) * limit).limit(limit).all()
+
     result = []
-    for k in ds_kho:
+    for k in kho_items:
         result.append({
             "MaNongSan": k.MaNongSan,
             "SoLuongTonKho": k.SoLuongTonKho,
             "NgayCapNhat": k.NgayCapNhat.strftime("%Y-%m-%d") if k.NgayCapNhat else None
         })
-    return jsonify(result)
+
+    return jsonify({
+        "items": result,
+        "pagination": {
+            "total": total,
+            "page": page,
+            "limit": limit,
+            "pages": (total + limit - 1) // limit,
+            "has_next": page * limit < total,
+            "has_prev": page > 1
+        }
+    })
+
 
 # Thêm mới thông tin kho
 @bp.route("/", methods=["POST"])
