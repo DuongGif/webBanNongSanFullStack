@@ -1,0 +1,9 @@
+/* body { padding-top: 50px; }
+.sidebar { background: #222; color: #ddd; min-height: 100vh; padding-top: 20px; }
+.sidebar .nav-sidebar li a { color: #ddd; }
+.sidebar .nav-sidebar li.active a, .sidebar .nav-sidebar li a:hover { background: #444; color: #fff; }
+.navbar-inverse { background-color: #337ab7; border-color: #2e6da4; }
+.main { padding: 20px; }
+.placeholder { margin-bottom: 30px; }
+
+table.dataTable th, table.dataTable td { white-space: nowrap; } */

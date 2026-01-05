@@ -1,0 +1,243 @@
+.category-button {
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    color: #337ab7;
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .category-button:hover {
+    background-color: #f0f0f0;
+    color: #23527c;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Thêm hiệu ứng cho loại đã chọn */
+.category-button.selected {
+    border-bottom: 2px solid #337ab7; /* Dòng kẻ dưới chữ */
+    font-weight: bold; /* Có thể làm đậm chữ khi chọn */
+    padding-bottom: 6px; /* Điều chỉnh khoảng cách giữa chữ và dòng kẻ */
+  }
+/* Thêm vào file CSS của bạn */
+/* Giảm kích thước và điều chỉnh vị trí của số lượng giỏ hàng */
+.cart-item-count {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem; /* Giảm padding */
+  font-size: 0.8rem; /* Giảm kích thước chữ */
+  min-width: 15px; /* Đảm bảo con số có kích thước nhỏ hơn */
+  height: 15px; /* Đảm bảo con số có kích thước nhỏ hơn */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Thêm CSS cho số lượng giỏ hàng */
+/* .cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+} */
+/* Products.css */
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* input {
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 150px;
+} */
+
+
+/* Overlay cho popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+  display: flex;
+  justify-content: center; /* Canh giữa theo chiều ngang */
+  align-items: center; /* Canh giữa theo chiều dọc */
+  z-index: 9999; /* Đảm bảo popup nổi lên trên các phần tử khác */
+}
+
+/* Container popup */
+.popup-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px; /* Có thể điều chỉnh lại kích thước */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Header của popup */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Đóng popup */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+/* Nội dung popup */
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Footer của popup */
+.popup-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Button thêm vào giỏ hàng */
+.popup-footer .btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* src/components/Information/Information.css */
+.information-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.info-item strong {
+  font-weight: bold;
+}
+
+.information-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.information-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.info-item strong {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.info-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.info-content span {
+  flex: 1;
+}
+
+.info-content input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+.order-card {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+.order-card table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.order-card th, .order-card td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
